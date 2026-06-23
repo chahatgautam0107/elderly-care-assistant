@@ -1,0 +1,46 @@
+[0:00 - HOOK]
+Welcome everyone. Today, I am showing you the Elderly Care Assistant, a compassionate daily concierge designed specifically to help seniors manage their health and cognitive wellness independently and safely.
+
+(pause)
+
+[0:20 - WHAT IT IS]
+This agent belongs to the Concierge Agents track. It acts as a friendly companion that looks after two crucial areas: daily medication schedules and cognitive mental exercises, ensuring that seniors have support right at their fingertips.
+
+(pause)
+
+[0:40 - SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see from our cover banner, this assistant offers a reliable, secure, and highly intuitive interface tailored for elderly care, combining scheduling, wellness tracking, and mental stimulation.
+
+(pause)
+
+[1:00 - ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let's trace how a request flows through our system.
+First, every query goes through the Security Checkpoint to detect prompt injections and redact PII.
+Next, if safe, the request enters the Orchestrator, which coordinates the workflow and routes the queries.
+The Orchestrator delegates tasks to our specialized sub-agents: the Medication Companion and the Mental Gym Companion.
+These companions access local data through our dedicated MCP Server, which exposes functions like get_medications and record_wellness_check.
+If a critical action is triggered—such as setting a life-critical drug or logging abnormal vitals—our system enters a Human-in-the-Loop review state, pausing for manual validation.
+Finally, the Format Final Output node presents the results cleanly back to the user.
+
+(pause)
+
+[2:00 - LIVE DEMO]
+(switch to playground at localhost:18081)
+Let's see this in action.
+First, I will ask: "Show me my medications." The Orchestrator routes this to the Medication Companion, which queries the MCP server and shows Aspirin, Vitamin D3, and Lisinopril.
+Next, let's schedule a critical medication: "Add a new medication: Metoprolol 25mg at 08:00. It is life-critical." Because this is a critical drug, the Medication Companion intercepts it, flags the state, and triggers our Human-in-the-Loop review. The interface prompts: "Please type 'Yes' to confirm and complete this, or 'No' to cancel." I will type "Yes" to complete it.
+Now, let's test a wellness log: "Log my daily wellness: heart rate is 130 bpm, mood is good, pain is 2." Since the heart rate is above 120 bpm, it immediately flags this for review, prompting the user for authorization before saving.
+Finally, let's try a mental gym game: "Give me a daily puzzle." The Orchestrator routes this to the Mental Gym Companion, which pulls a brain teaser like: "What has hands but cannot clap?" from our MCP server.
+
+(pause)
+
+[3:00 - SECURITY & MCP]
+Our system enforces robust safety: the Security Checkpoint instantly scrubs phone numbers, SSNs, and addresses, and logs all violations to security_audit.log.
+The MCP Server isolates data access cleanly, providing a modular tool boundary that the sub-agents interact with.
+
+(pause)
+
+[3:30 - IMPACT / CLOSE]
+This assistant gives families peace of mind and empowers seniors to manage their health safely. It is a premium, secure solution to a real-world caregiving challenge. Thank you!
