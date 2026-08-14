@@ -7,8 +7,8 @@ os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "False")  # Gemini API key on
 
 @dataclass
 class AgentConfig:
-    # Reads model from environment GEMINI_MODEL. Default gemini-2.5-flash.
-    model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    # Reads model from environment GEMINI_MODEL. Default gemini-3.5-flash-lite.
+    model: str = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
     mcp_server_port: int = 8090
     max_iterations: int = 3
     pii_redaction_enabled: bool = True

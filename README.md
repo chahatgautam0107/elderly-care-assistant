@@ -126,7 +126,7 @@ The narration and instructions for a live 3-minute presentation are documented i
 
 2. **`Error: 404 Model Not Found`**
    * **Cause:** The model environment variable `GEMINI_MODEL` is set to a retired model like `gemini-1.5-flash`.
-   * **Fix:** Ensure `.env` contains `GEMINI_MODEL=gemini-2.5-flash` (or `-lite`).
+   * **Fix:** Ensure `.env` contains `GEMINI_MODEL=gemini-3.5-flash-lite` (or `-pro`).
 
 3. **`Windows Event Loop Error / Stale Code Runs`**
    * **Cause:** Hot-reload is disabled on Windows; edits to `agent.py` or `mcp_server.py` are not picked up.
@@ -152,7 +152,7 @@ The narration and instructions for a live 3-minute presentation are documented i
    git add .
    git commit -m "Initial commit: elderly-care-assistant ADK agent"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/elderly-care-assistant.git
+   git remote add origin https://github.com/chahatgautam0107/elderly-care-assistant.git
    git push -u origin main
    ```
 
